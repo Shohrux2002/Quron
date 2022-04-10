@@ -25,7 +25,7 @@ let api = async function () {
       </div>  `;
       suralar.insertAdjacentHTML("afterbegin", html);
       const surahName = document.querySelector(".surah-name");
-
+      document.querySelector(".close").style.display = "none";
       surahName.addEventListener("click", async function () {
         // suralar.classList.toogle("hide");
         // oyatText.classList.toogle("width");
@@ -54,7 +54,7 @@ let api = async function () {
               oyatText.insertAdjacentHTML("beforeend", html1);
             });
           });
-        document.querySelector(".close").style.display = "none";
+
         console.log(aa);
         if (window.innerWidth < 600) {
           console.log(window.innerWidth);
