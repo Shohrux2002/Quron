@@ -26,6 +26,9 @@ let api = async function () {
       const surahName = document.querySelector(".surah-name");
 
       surahName.addEventListener("click", async function () {
+        // suralar.classList.toogle("hide");
+        // oyatText.classList.toogle("width");
+
         oyatText.textContent = "";
         let aniq = surahName.id;
         const aa = fetch(`https://api.quran.sutanlab.id/surah/${aniq}`)
@@ -52,6 +55,11 @@ let api = async function () {
           });
 
         console.log(aa);
+        if (window.innerWidth < 600) {
+          suralar.style.display = "none";
+          console.log(window.innerWidth);
+          oyatText.classList.add("popup");
+        }
       });
     });
   }
