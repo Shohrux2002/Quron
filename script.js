@@ -54,7 +54,7 @@ let api = async function () {
               oyatText.insertAdjacentHTML("beforeend", html1);
             });
           });
-
+        document.querySelector(".close").style.display = "none";
         console.log(aa);
         if (window.innerWidth < 600) {
           console.log(window.innerWidth);
