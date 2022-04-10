@@ -106,6 +106,9 @@ a {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+.close {
+  display: none;
+}
 @media (max-width: 600px) {
   .oyatlar {
     display: none;
@@ -115,10 +118,18 @@ a {
   }
   .popup {
     display: block;
-    width: 200vw;
+    max-width: 600px;
     height: 100vh;
     position: absolute;
     top: 0px;
     left: 0px;
+  }
+  .close {
+    position: fixed;
+    z-index: 55;
+    top: 10%;
+    right: 10%;
+    color: red;
+    width: 40px;
   }
 } ;

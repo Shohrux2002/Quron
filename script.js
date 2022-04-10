@@ -56,10 +56,14 @@ let api = async function () {
 
         console.log(aa);
         if (window.innerWidth < 600) {
-          suralar.style.display = "none";
           console.log(window.innerWidth);
           oyatText.classList.add("popup");
+          document.querySelector(".close").style.display = "block";
         }
+        document.querySelector("close").addEventListener("click", function () {
+          oyatText.classList.remove("popup");
+          document.querySelector(".close").style.display = "none";
+        });
       });
     });
   }
