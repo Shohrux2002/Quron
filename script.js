@@ -4,6 +4,7 @@ const newPage = document.querySelector(".new-page");
 const oyatlar = document.querySelector(".oyat-taxt");
 const oyatText = document.querySelector(".oyatlar");
 const input = document.querySelector(".seach--input");
+const close = document.querySelector("close");
 
 const tt = document.querySelector(".tt");
 console.log(tt);
@@ -60,13 +61,13 @@ let api = async function () {
           oyatText.classList.add("popup");
           document.querySelector(".close").style.display = "block";
         }
-        document.querySelector("close").addEventListener("click", function () {
-          oyatText.classList.remove("popup");
-          document.querySelector(".close").style.display = "none";
-        });
       });
     });
   }
+  document.querySelector(".close").addEventListener("click", function () {
+    oyatText.classList.remove("popup");
+    document.querySelector(".close").style.display = "none";
+  });
 
   input.addEventListener("input", function () {
     suralar.textContent = "";

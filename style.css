@@ -126,10 +126,13 @@ a {
   }
   .close {
     position: fixed;
-    z-index: 55;
+    z-index: 1;
     top: 10%;
     right: 10%;
     color: red;
     width: 40px;
+    font-size: 44px;
+
+    color: green;
   }
 } ;
