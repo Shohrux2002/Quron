@@ -5,15 +5,16 @@ const oyatlar = document.querySelector(".oyat-taxt");
 const oyatText = document.querySelector(".oyatlar");
 const input = document.querySelector(".seach--input");
 const close = document.querySelector("close");
+const headerRes = document.querySelector(".header__oyallar");
+const headingSecond = document.querySelector("heading-secondary");
+const play = document.querySelector(".play");
 
 const tt = document.querySelector(".tt");
-console.log(tt);
 
 let api = async function () {
   const dd = await fetch(`https://api.quran.sutanlab.id/surah`);
   const bb = await dd.json();
 
-  console.log(bb.data);
   if (input.value == "") {
     bb.data.reverse();
     bb.data.forEach((element) => {
@@ -37,14 +38,14 @@ let api = async function () {
             return res.json();
           })
           .then((res) => {
-            console.log(res.data.verses);
+            // headingSecond.textContent = res.name;
             res.data.verses.forEach((element) => {
               let html1 = `
-              <div class="oyat-taxt "><p class="taxt">
+              <div id="${element.number.inSurah}.2" class="oyat-taxt "><p class="taxt">
               <span class="number">${element.number.inSurah}</span> ${element.text.arab} <br> <br> <br>   ${element.text.transliteration.en}<br> <br> <br> <br> 
               ${element.tafsir.id.short} <br> <br> <br>   
             </p>
-            <audio controls>
+            <audio id="a${element.number.inSurah}" controls>
               <source
                 class="tt"
                 src="${element.audio.secondary[0]}"
@@ -52,10 +53,28 @@ let api = async function () {
             </audio></div>`;
               // element;
               oyatText.insertAdjacentHTML("beforeend", html1);
+              console.log(element.number.inSurah);
+              console.log(oyatText);
+              let idAudio = document.querySelector("#a1");
+              let idA2 = document.querySelector("#a2");
+              play.addEventListener("click", function () {
+                let i = 3;
+                let bool = true;
+
+                idAudio.play();
+
+                idAudio.onended = () => {
+                  idA2.play();
+                  idAudio = idA2;
+                  idA2 = document.querySelector(`#a${i}`);
+                  ++i;
+                  console.log(555);
+                  idAudio.play();
+                };
+              });
             });
           });
 
-        console.log(aa);
         if (window.innerWidth < 600) {
           console.log(window.innerWidth);
           oyatText.classList.add("popup");
